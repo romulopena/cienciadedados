@@ -1,16 +1,16 @@
 import { getCSS, tickConfig } from "./common.js"
 
-async function quantidadeUsuariosPorRede() {
-    const url = 'https://raw.githubusercontent.com/guilhermeonrails/api/main/numero-usuarios.json'
+async function quantidadePessoasTrabalhando() {
+    const url = 'https://raw.githubusercontent.com/romulopena/cienciadedados/refs/heads/main/basededados/trabalho-ocupacoes.json'
     const res = await fetch(url)
     const dados = await res.json()
-    const nomeDasRedes = Object.keys(dados)
-    const quantidadeDeUsuarios = Object.values(dados)
+    const nomeDasAreas = Object.keys(dados)
+    const quantidadeDeEmpregados = Object.values(dados)
 
     const data = [
         {
-            x: nomeDasRedes, 
-            y: quantidadeDeUsuarios, 
+            x: nomeDasAreas, 
+            y: quantidadeDeEmpregados, 
             type: 'bar',
             marker: {
                 color: getCSS('--primary-color')
@@ -22,7 +22,7 @@ async function quantidadeUsuariosPorRede() {
         plot_bgcolor: getCSS('--bg-color'),
         paper_bgcolor: getCSS('--bg-color'),
         title: {
-            text: 'Redes sociais com mais usuários',
+            text: 'Área de trabalho com mais empregados',
             x: 0,
             font: {
                 color: getCSS('--primary-color'),
@@ -33,7 +33,7 @@ async function quantidadeUsuariosPorRede() {
         xaxis: {
             tickfont: tickConfig,
             title: {
-                text: 'Nome das redes',
+                text: 'Nome das Áreas',
                 font: {
                     color: getCSS('--secondary-color')
                 }
@@ -42,7 +42,7 @@ async function quantidadeUsuariosPorRede() {
         yaxis: {
             tickfont: tickConfig,
             title: {
-                text: 'Bilhões de usuários ativos',
+                text: 'Bilhões de trabalhadores ativos',
                 font: {
                     color: getCSS('--secondary-color')
                 }
@@ -56,4 +56,4 @@ async function quantidadeUsuariosPorRede() {
     Plotly.newPlot(grafico, data, layout)
 }
 
-quantidadeUsuariosPorRede()
+quantidadePessoasTrabalhando()
